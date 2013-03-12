@@ -5,9 +5,9 @@ import br.com.guiato.solrtechtalk.service.SQLService
 class SQLController {
 
 	def sqlService
-	
+
     def findAllCoutries = {
-    	
+    
     }
 
     def findStatesByCountry = {
