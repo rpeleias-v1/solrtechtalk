@@ -13,20 +13,26 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "create-drop" // one of 'create', 'create-drop', 'update', 'validate', ''
-            url = "jdbc:h2:mem:devDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+            driverClassName = 'com.p6spy.engine.spy.P6SpyDriver'
+            url = 'jdbc:postgresql://localhost/solrtechtalk'
+            username = 'goku2013'
+            password = 'goku2013'
         }
     }
     test {
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:mem:testDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+            driverClassName = 'com.p6spy.engine.spy.P6SpyDriver'
+            url = 'jdbc:postgresql://localhost/solrtechtalk'
+            username = 'goku2013'
+            password = 'goku2013'
         }
     }
     production {
         dataSource {
-            dbCreate = "update"
-            url = "jdbc:h2:prodDb;MVCC=TRUE;LOCK_TIMEOUT=10000"
+            driverClassName = 'com.p6spy.engine.spy.P6SpyDriver'
+            url = 'jdbc:postgresql://localhost/solrtechtalk'
+            username = 'goku2013'
+            password = 'goku2013'
             pooled = true
             properties {
                maxActive = -1
