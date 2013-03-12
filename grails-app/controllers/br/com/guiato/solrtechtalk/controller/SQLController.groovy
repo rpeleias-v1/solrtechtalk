@@ -1,16 +1,20 @@
 package br.com.guiato.solrtechtalk.controller
 
+import br.com.guiato.solrtechtalk.service.SQLService
+
 class SQLController {
 
-    def findAllCoutries() {
+	def sqlService
+	
+    def findAllCoutries = {
     	
     }
 
-    def findStatesByCountry() {
+    def findStatesByCountry = {
 
     }
 
-    def listCitiesByCountryAndState() {
+    def listCitiesByCountryAndState = {
     	
     }
 }
