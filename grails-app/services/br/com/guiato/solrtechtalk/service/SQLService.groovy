@@ -1,8 +1,8 @@
 package br.com.guiato.solrtechtalk.service
 
-import br.com.guiato.solrtechtalk.service.Country;
-import br.com.guiato.solrtechtalk.service.State;
-import br.com.guiato.solrtechtalk.service.City;
+import br.com.guiato.solrtechtalk.model.Country;
+import br.com.guiato.solrtechtalk.model.State;
+import br.com.guiato.solrtechtalk.model.City;
 
 class SQLService {
 

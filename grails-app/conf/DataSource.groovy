@@ -15,7 +15,7 @@ environments {
     development {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:postgres://localhost/solrintegration"
+            url = "jdbc:postgresql://localhost:5432/solrintegration"
             username = "grails"
             password = "grails"
         }   
@@ -23,7 +23,7 @@ environments {
     test {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:postgres://localhost/solrintegration"
+            url = "jdbc:postgresql://localhost:5432/solrintegration"
             username = "grails"
             password = "grails"
         }   
@@ -31,7 +31,7 @@ environments {
     production {
         dataSource {
             dbCreate = "update"
-            url = "jdbc:postgres://localhost/solrintegration"
+            url = "jdbc:postgresql://localhost:5432/solrintegration"
             username = "grails"
             password = "grails"
         }   

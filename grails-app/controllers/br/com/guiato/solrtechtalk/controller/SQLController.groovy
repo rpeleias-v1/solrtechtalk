@@ -10,7 +10,7 @@ class SQLController {
     	def model = [
     		countries: sqlService.findAllCoutries()
     	]
-    	render(model: model)
+    	return model
     }
 
     def findStatesByCountry = {
@@ -19,7 +19,7 @@ class SQLController {
     		def model = [
     			states: sqlService.findStatesByCountry(selectedCountry)
     		]
-    		render(model: model)
+    		return model
     	}
     }
 
@@ -31,6 +31,6 @@ class SQLController {
     			cities: sqlService.listCitiesByCountryAndState(selectedCountry, selectedState)
     		]
     	}
-    	render(model: model)
+    	render(template: 'listCitiesCOuntryState', model: model)
     }
 }

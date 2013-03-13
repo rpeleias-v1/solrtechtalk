@@ -1,24 +1,24 @@
-CREATE TABLE IF NOT EXISTS `country` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(60) DEFAULT NULL,
-  `acronym` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+CREATE TABLE IF NOT EXISTS country (
+  id SERIAL,
+  name varchar(60) DEFAULT NULL,
+  acronym varchar(10) DEFAULT NULL,
+  PRIMARY KEY (id)
+);
 
-INSERT INTO `pais` (`id`, `name`, `acronym`) VALUES (1, 'Brasil', 'BR');
-
-
-CREATE TABLE IF NOT EXISTS `state` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(75) DEFAULT NULL,
-  `uf` varchar(5) DEFAULT NULL,
-  `country_id` int(7) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_state_country` (`country`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=28 ;
+INSERT INTO country (id, name, acronym) VALUES (1, 'Brasil', 'BR');
 
 
-INSERT INTO `estado` (`id`, `name`, `uf`, `pais`) VALUES
+CREATE TABLE IF NOT EXISTS state (
+  id SERIAL,
+  name varchar(75) DEFAULT NULL,
+  uf varchar(5) DEFAULT NULL,
+  country_id integer DEFAULT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (country_id) references country
+) ;
+
+
+INSERT INTO state (id, name, uf, country_id) VALUES
 (1, 'Acre', 'AC', 1),
 (2, 'Alagoas', 'AL', 1),
 (3, 'Amazonas', 'AM', 1),
@@ -48,21 +48,15 @@ INSERT INTO `estado` (`id`, `name`, `uf`, `pais`) VALUES
 (27, 'Tocantins', 'TO', 1);
 
 
+CREATE TABLE IF NOT EXISTS city  (
+  id SERIAL,
+  name varchar(120) DEFAULT NULL,
+  state_id integer DEFAULT NULL,
+  PRIMARY KEY (id),
+  FOREIGN KEY (state_id) references state
+) ;
 
-
-
-
-
-
-CREATE TABLE IF NOT EXISTS `city` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `name` varchar(120) DEFAULT NULL,
-  `state_id` int(5) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `fk_city_state` (`state`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5565 ;
-
-INSERT INTO `cidade` (`id`, `name`, `state_id`) VALUES
+INSERT INTO city (id, name, state_id) VALUES
 (1, 'Afonso Cláudio', 8),
 (2, 'Água Doce do Norte', 8),
 (3, 'Águia Branca', 8),
@@ -2089,7 +2083,7 @@ INSERT INTO `cidade` (`id`, `name`, `state_id`) VALUES
 (2024, 'Mariana', 11),
 (2025, 'Marilac', 11),
 (2026, 'Mário Campos', 11);
-INSERT INTO `cidade` (`id`, `nome`, `estado`) VALUES
+INSERT INTO  city (id, name, state_id) VALUES
 (2027, 'Maripá de Minas', 11),
 (2028, 'Marliéria', 11),
 (2029, 'Marmelópolis', 11),
@@ -3957,7 +3951,7 @@ INSERT INTO `cidade` (`id`, `nome`, `estado`) VALUES
 (3891, 'Benjamin Constant do Sul', 23),
 (3892, 'Bento Gonçalves', 23),
 (3893, 'Boa Vista das Missões', 23);
-INSERT INTO `cidade` (`id`, `nome`, `estado`) VALUES
+INSERT INTO city (id, name, state_id) VALUES
 (3894, 'Boa Vista do Buricá', 23),
 (3895, 'Boa Vista do Cadeado', 23),
 (3896, 'Boa Vista do Incra', 23),
