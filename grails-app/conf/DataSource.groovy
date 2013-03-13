@@ -2,8 +2,6 @@ dataSource {
     pooled = true
     driverClassName = "org.postgresql.Driver"
     dialect = org.hibernate.dialect.PostgreSQLDialect
-    username = "sa"
-    password = ""
 }
 hibernate {
     cache.use_second_level_cache = true
@@ -14,7 +12,6 @@ hibernate {
 environments {
     development {
         dataSource {
-            dbCreate = "update"
             url = "jdbc:postgresql://localhost:5432/solrintegration"
             username = "grails"
             password = "grails"
@@ -22,7 +19,6 @@ environments {
     }   
     test {
         dataSource {
-            dbCreate = "update"
             url = "jdbc:postgresql://localhost:5432/solrintegration"
             username = "grails"
             password = "grails"
@@ -30,7 +26,6 @@ environments {
     }   
     production {
         dataSource {
-            dbCreate = "update"
             url = "jdbc:postgresql://localhost:5432/solrintegration"
             username = "grails"
             password = "grails"

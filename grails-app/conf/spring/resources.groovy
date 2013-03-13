@@ -1,3 +1,12 @@
-// Place your Spring DSL code here
+import br.com.guiato.solrtechtalk.service.*;
+
+
 beans = {
+	sqlService(SQLService) {
+
+	}
+
+	solrService(SolrService) {
+		
+	}
 }

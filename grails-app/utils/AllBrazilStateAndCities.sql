@@ -1,19 +1,17 @@
 CREATE TABLE IF NOT EXISTS country (
-  id SERIAL,
+  id SERIAL primary key,
   name varchar(60) DEFAULT NULL,
-  acronym varchar(10) DEFAULT NULL,
-  PRIMARY KEY (id)
+  acronym varchar(10) DEFAULT NULL
 );
 
 INSERT INTO country (id, name, acronym) VALUES (1, 'Brasil', 'BR');
 
 
 CREATE TABLE IF NOT EXISTS state (
-  id SERIAL,
+  id SERIAL primary key,
   name varchar(75) DEFAULT NULL,
   uf varchar(5) DEFAULT NULL,
   country_id integer DEFAULT NULL,
-  PRIMARY KEY (id),
   FOREIGN KEY (country_id) references country
 ) ;
 
@@ -49,10 +47,9 @@ INSERT INTO state (id, name, uf, country_id) VALUES
 
 
 CREATE TABLE IF NOT EXISTS city  (
-  id SERIAL,
+  id SERIAL primary key,
   name varchar(120) DEFAULT NULL,
   state_id integer DEFAULT NULL,
-  PRIMARY KEY (id),
   FOREIGN KEY (state_id) references state
 ) ;
 

@@ -10,5 +10,13 @@ class City {
 	
     static hasOne = [state: State]
 
+    static mapping = {
+    	version false
+    }
+
     String name
+
+    String toString() {
+    	return name
+    }
 }

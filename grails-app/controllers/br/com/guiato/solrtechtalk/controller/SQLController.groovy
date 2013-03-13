@@ -6,9 +6,12 @@ class SQLController {
 
 	def sqlService
 
-    def findAllCoutries = {
+    def index = {
+        def countries = sqlService.findAllCoutries()
+        def states = sqlService.findStatesByCountry(countries?.get(0))
     	def model = [
-    		countries: sqlService.findAllCoutries()
+    		countries: countries,
+            states: states
     	]
     	return model
     }

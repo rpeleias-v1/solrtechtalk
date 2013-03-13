@@ -6,6 +6,8 @@ import br.com.guiato.solrtechtalk.model.City;
 
 class SQLService {
 
+    boolean transactional = true
+    
     def findAllCoutries() {
     	List<Country> countries = Country.list();
     	return countries

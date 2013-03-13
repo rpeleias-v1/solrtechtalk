@@ -10,6 +10,14 @@ class Country {
 
     static hasMany = [states: State]
 
+    static mapping = {
+    	version false
+    }
+
     String name
     String acronym
+
+    String toString() {
+        return name;
+    }
 }

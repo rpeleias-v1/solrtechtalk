@@ -11,6 +11,14 @@ class State {
 	static hasOne = [country: Country] 
     static hasMany = [cities: City]
 
+    static mapping = {
+    	version false
+    }
+
     String name
     String uf
+
+    String toString() {
+    	return name
+    }
 }
