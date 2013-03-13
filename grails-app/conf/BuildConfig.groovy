@@ -51,6 +51,7 @@ grails.project.dependency.resolution = {
         build ":tomcat:$grailsVersion"
 
         runtime ":database-migration:1.2.1"
+        runtime 'postgresql:postgresql:9.1-901-1.jdbc4'
 
         compile ':cache:1.0.1'
     }

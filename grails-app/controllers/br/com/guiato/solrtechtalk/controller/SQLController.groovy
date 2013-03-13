@@ -8,7 +8,7 @@ class SQLController {
 
     def findAllCoutries = {
     	def model = [
-    		countries: sqlService.findAllCoutries();
+    		countries: sqlService.findAllCoutries()
     	]
     	render(model: model)
     }
@@ -17,7 +17,7 @@ class SQLController {
     	def selectedCountry = params?.country
     	if (selectedCountry) {
     		def model = [
-    			states: sqlService.findStatesByCountry(selectedCountry);
+    			states: sqlService.findStatesByCountry(selectedCountry)
     		]
     		render(model: model)
     	}
