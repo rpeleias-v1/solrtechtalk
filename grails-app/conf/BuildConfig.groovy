@@ -54,6 +54,10 @@ grails.project.dependency.resolution = {
         runtime ":database-migration:1.2.1"
 
         compile ':cache:1.0.1'
+
+        compile ('org.apache.solr:solr-solrj:3.6.0') {
+            
+        }
         
     }
 }

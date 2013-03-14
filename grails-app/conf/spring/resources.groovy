@@ -9,4 +9,9 @@ beans = {
 	solrService(SolrService) {
 		
 	}
+
+	indexingService(IndexingService) {
+		
+	}
+
 }

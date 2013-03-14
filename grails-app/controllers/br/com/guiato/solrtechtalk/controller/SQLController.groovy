@@ -1,7 +1,6 @@
 package br.com.guiato.solrtechtalk.controller
 
 import br.com.guiato.solrtechtalk.service.SQLService
-import br.com.guiato.solrtechtalk.model.*;
 
 class SQLController {
 
@@ -10,6 +9,7 @@ class SQLController {
     def index = {
         def countries = sqlService.findAllCoutries()
         def states = sqlService.findStatesByCountry(countries?.get(0))
+        def cities = sqlService.
     	def model = [
     		countries: countries,
             states: states
@@ -27,19 +27,14 @@ class SQLController {
     	}
     }
 
-    def listCitiesByState = {
-        println params?.idSelectedCountry
-    	def selectedCountry = Country.get(params?.idSelectedCountry)
-    	def selectedState = State.get(params?.idSelectedState)
-
+    def listCitiesByCountryAndState = {
+    	def selectedCountry = params?.country
+    	def selectedState = params?.state
     	if (selectedCountry && selectedState) {
-            def cities = sqlService.listCitiesByState(selectedCountry, selectedState)
     		def model = [
-    			cities: cities,
-                totalCityNumber: cities.size()
+    			cities: sqlService.listCitiesByCountryAndState(selectedCountry, selectedState)
     		]
-            render(template: 'listCitiesCountryState', model: model)
     	}
-    	
+    	render(template: 'listCitiesCOuntryState', model: model)
     }
 }

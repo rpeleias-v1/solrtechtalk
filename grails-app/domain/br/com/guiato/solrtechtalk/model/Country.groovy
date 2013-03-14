@@ -1,5 +1,7 @@
 package br.com.guiato.solrtechtalk.model
 
+import org.grails.solr.Solr
+
 class Country {
 
 	// enable indexing of a domain class. This will enable the dynamic methods on the domain object.
@@ -14,7 +16,10 @@ class Country {
     	version false
     }
 
+    @Solr(field="name")
     String name
+
+    @Solr(field="acronym")
     String acronym
 
     String toString() {
