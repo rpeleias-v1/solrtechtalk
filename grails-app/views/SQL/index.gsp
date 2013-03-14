@@ -1,6 +1,7 @@
 r<!DOCTYPE html>
 <html>
 	<head>
+		<g:javascript library="jquery" />
 		<meta name="layout" content="main"/>
 		<title>Welcome to Grails</title>
 		<style type="text/css" media="screen">
@@ -79,23 +80,35 @@ r<!DOCTYPE html>
 				}
 			}
 		</style>
+		
 	</head>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="page-body" role="main">
-			<h1>Apache Solr and Grails Integration</h1>
-			<br/>
-			<p>The purpose of this software is the demonstration of the benefits os Apache Solr integrated to 	 grails. For comparison, it was developed SQL and Slor search examples to compare each other, 
-				and to show for Panda how can we integrate Solr and Grails. Moreover, there is a functionality  that an index operation can be done. Enjoy a lot!</p>
+			<g:form action="listCitiesByState" controller="SQL">
+				<g:select name="idSelectedCountry"
+						  from="${countries}"
+						  value="${selectedCountry}"
+						  optionKey="id" />
+				<g:select name="idSelectedState"
+						  from="${states}"
+						  value="${selectedState}"
+						  optionKey="id" />
+				<g:submitToRemote name="listCities" value="List Cities" update="listCountryStateCities"
+				url="${[controller:'SQL',action:'listCitiesByState']}"/>
 
-			<div id="controller-list" role="navigation">
-				<h2>Available Functionality:</h2>
-				<ul>
-					<g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
-						<li class="controller"><g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link></li>
-					</g:each>
-				</ul>
-			</div>
+			</g:form>		
+
+			<g:if test="${flash.message}">
+            	<div class="message">${flash.message}</div>
+            </g:if>
+
+            <br/>
+            <div id="listCountryStateCities">
+            	<g:render template="listCitiesCountryState" />        
+            </div>
+            
+			
 		</div>
 	</body>
 </html>

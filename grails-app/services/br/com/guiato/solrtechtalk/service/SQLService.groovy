@@ -18,8 +18,8 @@ class SQLService {
     	return states
     }
 
-    def listCitiesByCountryAndState(Country country, State, state) {
-    	List<City> cities = City.findAllByCountryAndState(country, state)
+    def listCitiesByState(State state) {
+    	List<City> cities = City.findAllByState(state)
     	return cities
     }
 }
