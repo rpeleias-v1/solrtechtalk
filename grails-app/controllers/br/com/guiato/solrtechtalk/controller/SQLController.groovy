@@ -27,13 +27,16 @@ class SQLController {
     }
 
     def listCitiesByCountryAndState = {
-    	def selectedCountry = params?.country
-    	def selectedState = params?.state
+    	def selectedCountry = params?.selectedCountry
+    	def selectedState = params?.selectedState
     	if (selectedCountry && selectedState) {
+            def cities = sqlService.listCitiesByCountryAndState(selectedCountry, selectedState)
     		def model = [
-    			cities: sqlService.listCitiesByCountryAndState(selectedCountry, selectedState)
+    			cities: cities,
+                totalCityNumber: cities.size()
     		]
+            render(template: 'listCitiesCountryState', model: model)
     	}
-    	render(template: 'listCitiesCOuntryState', model: model)
+    	
     }
 }
