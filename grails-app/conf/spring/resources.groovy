@@ -6,7 +6,7 @@ beans = {
 
 	}
 
-	solrService(SolrService) {
+	solrSearchService(SolrSearchService) {
 		
 	}
 

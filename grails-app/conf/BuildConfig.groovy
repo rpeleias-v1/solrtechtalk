@@ -38,9 +38,7 @@ grails.project.dependency.resolution = {
         // runtime 'mysql:mysql-connector-java:5.1.20'
         runtime 'postgresql:postgresql:9.1-901.jdbc4'
 
-        compile ('org.apache.solr:solr-solrj:3.6.0') {
-            
-        }
+        
     }
 
     plugins {
@@ -60,6 +58,6 @@ grails.project.dependency.resolution = {
         compile ':cache:1.0.1'
 
 
-        
+        compile ":solr:0.2"
     }
 }

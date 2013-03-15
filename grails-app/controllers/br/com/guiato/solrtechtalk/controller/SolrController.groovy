@@ -4,7 +4,7 @@ import br.com.guiato.solrtechtalk.service.SolrService
 
 class SolrController {
 
-	def solrService
+	def solrSearchService
 
     def findAllCoutries = {
     	
