@@ -13,8 +13,9 @@ class SolrSearchService {
 	boolean transactional = true
 
     def findAllCoutries() {
-    	def result = Country.solrSearch("${Country.solrFieldName("name")}:*")
-    	def countries = result.resultList
+    	def result = Country.searchSolr("${Country.solrFieldName("name")}:*")
+    	//TODO- change from SolrDocument to Object
+    	List<Country> countries = result.queryResponse.results
     	return countries
     }
 
