@@ -25,7 +25,7 @@ class SolrSearchService {
     }
 
     def listCitiesByState(State state) {
-    	def result = State.searchSolr("${City.solrFieldName('name')}:" + country.name + "" )
+    	def result = State.searchSolr("${City.solrFieldName('name')}:" + state.name + "" )
         List<City> cities = result.queryResponse.results
         return cities
     }
