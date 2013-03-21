@@ -2,6 +2,8 @@ package br.com.guiato.solrtechtalk.controller
 
 import br.com.guiato.solrtechtalk.service.SQLService
 
+import br.com.guiato.solrtechtalk.model.*;
+
 class SQLController {
 
 	def sqlService
@@ -9,7 +11,6 @@ class SQLController {
     def index = {
         def countries = sqlService.findAllCoutries()
         def states = sqlService.findStatesByCountry(countries?.get(0))
-        def cities = sqlService.
     	def model = [
     		countries: countries,
             states: states
@@ -27,14 +28,13 @@ class SQLController {
     	}
     }
 
-    def listCitiesByCountryAndState = {
-    	def selectedCountry = params?.country
-    	def selectedState = params?.state
-    	if (selectedCountry && selectedState) {
+    def listCitiesByState = {
+    	def selectedState = State.get(params?.idSelectedState)
+    	if (selectedState) {
     		def model = [
-    			cities: sqlService.listCitiesByCountryAndState(selectedCountry, selectedState)
+    			cities: sqlService.listCitiesByState(selectedState)
     		]
-    	}
-    	render(template: 'listCitiesCOuntryState', model: model)
+            render(template: 'listCitiesCountryState', model: model)
+    	}    	
     }
 }

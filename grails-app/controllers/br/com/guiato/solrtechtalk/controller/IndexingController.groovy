@@ -19,4 +19,16 @@ class IndexingController {
     def indexCitiesToSolr = {
     	indexingService.indexCitiesToSolr();
     }
+
+    def deleteCountriesOfSolr = {
+        indexingService.deleteCountriesOfSolr();
+    }
+
+    def deleteStatesOfSolr = {
+        indexingService.deleteStatesOfSolr();
+    }
+
+    def deleteCitiesOfSolr = {
+        indexingService.deleteCitiesOfSolr();
+    }
 }

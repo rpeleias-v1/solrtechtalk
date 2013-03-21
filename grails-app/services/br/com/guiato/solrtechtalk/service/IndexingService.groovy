@@ -14,22 +14,15 @@ class IndexingService {
     	countries.each { country ->
             country.indexSolr()
     	}
-
-        def result = Country.searchSolr("${Country.solrFieldName('name')}:Brasil")
-
-        result.resultList.each {
-            println "${it.name}"
-        }
-        
     }
 
-    def indexStatesToSolr() {0
+    def indexStatesToSolr() {
     	def states = State.list()
 
     	states.each { state ->
     		state.indexSolr()
     	}
-    }
+    }   
 
     def indexCitiesToSolr() {
     	def cities = City.list()
@@ -37,5 +30,29 @@ class IndexingService {
     	cities.each { city ->        
             city.indexSolr()
     	}
+    }
+
+    def deleteCountriesOfSolr() {
+        def countries = Country.list()
+
+        countries.each { country ->
+            country.deleteSolr()
+        }
+    }
+
+    def deleteStatesOfSolr() {
+        def states = State.list()
+
+        states.each { state ->
+            state.deleteSolr()
+        }
+    }
+
+    def deleteCitiesOfSolr() {
+        def cities = City.list()
+
+        cities.each { city ->        
+            city.deleteSolr()
+        }
     }
 }

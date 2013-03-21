@@ -85,43 +85,29 @@ r<!DOCTYPE html>
 	<body>
 		<a href="#page-body" class="skip"><g:message code="default.link.skip.label" default="Skip to content&hellip;"/></a>
 		<div id="page-body" role="main">
-			<g:form>
+			<g:form action="listCitiesByState" controller="SQL">
+				<g:select name="idSelectedCountry"
+						  from="${countries}"
+						  value="${selectedCountry}"
+						  optionKey="id" />
+				<g:select name="idSelectedState"
+						  from="${states}"
+						  value="${selectedState}"
+						  optionKey="id" />
+				<g:submitToRemote name="listCities" value="List Cities" update="listCountryStateCities"
+				url="${[controller:'SQL',action:'listCitiesByState']}"/>
 
-				<table>
-					<tr>
-
-					</tr>
-					<td>
-						<g:submitToRemote name="indexCountries" value="Index Countries" update="messages"
-						url="${[controller:'Indexing',action:'indexCountriesToSolr']}"/>
-
-						<g:submitToRemote name="indexStates" value="Index States" update="messages"
-						url="${[controller:'Indexing',action:'indexStatesToSolr']}"/>
-					
-						<g:submitToRemote name="indexCities" value="Index Cities" update="messages"
-						url="${[controller:'Indexing',action:'indexCitiesToSolr']}"/>
-					</td>
-					<td>
-						<g:submitToRemote name="indexCountries" value="Delete Countries" update="messages"
-						url="${[controller:'Indexing',action:'deleteCountriesOfSolr']}"/>
-
-						<g:submitToRemote name="indexStates" value="Delete States" update="messages"
-						url="${[controller:'Indexing',action:'deleteStatesOfSolr']}"/>
-						
-						<g:submitToRemote name="indexCities" value="Delete Cities" update="messages"
-						url="${[controller:'Indexing',action:'deleteCitiesOfSolr']}"/>
-
-					</td>
-				</table>
-				
 			</g:form>		
 
-			<br/>
-			<div id="messages">
-				<g:if test="${flash.message}">
-            		<div class="message">${flash.message}</div>
-            	</g:if>
-			</div>
+			<g:if test="${flash.message}">
+            	<div class="message">${flash.message}</div>
+            </g:if>
+
+            <br/>
+            <div id="listCountryStateCities">
+            	<g:render template="listCitiesCountryState" />        
+            </div>
+            
 			
 		</div>
 	</body>

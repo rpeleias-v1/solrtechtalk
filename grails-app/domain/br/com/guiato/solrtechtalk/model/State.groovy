@@ -17,6 +17,9 @@ class State {
     	version false
     }
 
+    @Solr(field="id")
+    Long id
+
     @Solr(field="name")
     String name
 

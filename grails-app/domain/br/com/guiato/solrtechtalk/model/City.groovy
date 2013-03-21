@@ -8,7 +8,7 @@ class City {
 	static enableSolrSearch = true
 
 	//To have the index updated on inserts, updates and deletes of your domain classes
-	static solrAutoIndex = true
+	static solrAutoIndex = false
 	
     static hasOne = [state: State]
 
@@ -16,8 +16,10 @@ class City {
     	version false
     }
 
+    @Solr(field="id")
     Long id 
 
+    @Solr(field="name")
     String name
 
     String toString() {
